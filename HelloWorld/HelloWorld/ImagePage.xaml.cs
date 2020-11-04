@@ -16,9 +16,7 @@ namespace HelloWorld
         {
             InitializeComponent();
 
-            var imageSource = new UriImageSource { Uri = new Uri("http://lorempixel.com/1920/1080/sports/5/") };
-            imageSource.CachingEnabled = false;
-            image.Source = imageSource;
+            //image.Source = ImageSource.FromResource("HelloWorld.Images.background.jpg");
         }
     }
 }
