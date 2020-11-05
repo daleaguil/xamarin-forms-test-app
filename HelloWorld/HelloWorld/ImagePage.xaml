@@ -4,6 +4,13 @@
              xmlns:local="clr-namespace:HelloWorld.MarkupExtensions"
              x:Class="HelloWorld.ImagePage">
     <ContentPage.Content>
-        <Image Source="{local:EmbeddedImage HelloWorld.Images.background.jpg}" x:Name="image" Aspect="AspectFill"/>
+        <Button x:Name="btn">
+            <Button.ImageSource>
+                <OnPlatform x:TypeArguments="FileImageSource"
+                    iOS="clock.png"
+                    Android="clock.png" />
+                    <!--WinPhone="Images/clock.png"-->
+            </Button.ImageSource>
+        </Button>
     </ContentPage.Content>
 </ContentPage>

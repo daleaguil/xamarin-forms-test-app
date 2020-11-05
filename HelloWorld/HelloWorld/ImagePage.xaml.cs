@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 using Xamarin.Forms;
+using Xamarin.Forms.PlatformConfiguration;
 using Xamarin.Forms.Xaml;
 
 namespace HelloWorld
@@ -16,7 +17,9 @@ namespace HelloWorld
         {
             InitializeComponent();
 
-            //image.Source = ImageSource.FromResource("HelloWorld.Images.background.jpg");
+            //btn.ImageSource = Device.RuntimePlatform == Device.Android
+            //    ? ImageSource.FromFile("clock.png")
+            //    : ImageSource.FromFile("Images/clock.png");
         }
     }
 }
