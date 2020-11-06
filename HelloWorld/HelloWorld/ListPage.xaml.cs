@@ -10,11 +10,20 @@ using Xamarin.Forms.Xaml;
 namespace HelloWorld
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class Demo : ContentPage
+    public partial class ListPage : ContentPage
     {
-        public Demo()
+        public ListPage()
         {
             InitializeComponent();
+
+            var names = new List<string>
+            {
+                "Dale",
+                "Juan",
+                "Pedro"
+            };
+
+            listView.ItemsSource = names;
         }
     }
 }
