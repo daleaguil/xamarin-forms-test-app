@@ -3,7 +3,10 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="HelloWorld.ListPage">
     <ContentPage.Content>
-        <ListView x:Name="listView" HasUnevenRows="True">
+        <ListView x:Name="listView" HasUnevenRows="True" SeparatorVisibility="None"
+                  IsGroupingEnabled="True" 
+                  GroupDisplayBinding="{Binding Title}" 
+                  GroupShortNameBinding="{Binding ShortTitle}">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>
