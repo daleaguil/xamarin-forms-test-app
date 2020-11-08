@@ -29,5 +29,18 @@ namespace HelloWorld
                 }
             };
         }
+
+        private void listView_ItemTapped(object sender, ItemTappedEventArgs e)
+        {
+            var contact = e.Item as Contact;
+            DisplayAlert("Tapped", contact.Name, "OK");
+        }
+
+        private void listView_ItemSelected(object sender, SelectedItemChangedEventArgs e)
+        {
+            listView.SelectedItem = null;
+            //var contact = e.SelectedItem as Contact;
+            //DisplayAlert("Selected", contact.Name, "OK");
+        }
     }
 }
