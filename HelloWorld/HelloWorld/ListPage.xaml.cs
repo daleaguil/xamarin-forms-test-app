@@ -15,15 +15,21 @@ namespace HelloWorld
     public partial class ListPage : ContentPage
     {
         private ObservableCollection<Contact> _contacts;
-        public ListPage()
-        {
-            InitializeComponent();
 
-            _contacts = new ObservableCollection<Contact>
+        ObservableCollection<Contact> GetContacts()
+        {
+            //This simulates consuming a remote service.
+            return new ObservableCollection<Contact>
             {
                 new Contact { Name="Dale", ImageUrl="http://lorempixel.com/100/100/people/1" },
                 new Contact { Name="Juan", ImageUrl="http://lorempixel.com/100/100/people/2", Status="Hey, let's talk!" }
             };
+        }
+        public ListPage()
+        {
+            InitializeComponent();
+
+            _contacts = GetContacts();
 
             listView.ItemsSource = _contacts;
         }
@@ -40,6 +46,13 @@ namespace HelloWorld
         {
             var contact = (sender as MenuItem).CommandParameter as Contact;
             _contacts.Remove(contact);
+        }
+
+        private void listView_Refreshing(object sender, EventArgs e)
+        {
+            listView.ItemsSource = GetContacts();
+
+            listView.EndRefresh();
         }
     }
 }
