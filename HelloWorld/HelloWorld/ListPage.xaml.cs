@@ -16,14 +16,19 @@ namespace HelloWorld
     {
         private ObservableCollection<Contact> _contacts;
 
-        ObservableCollection<Contact> GetContacts()
+        ObservableCollection<Contact> GetContacts(string searchText = null)
         {
             //This simulates consuming a remote service.
-            return new ObservableCollection<Contact>
+            var contacts = new ObservableCollection<Contact>
             {
                 new Contact { Name="Dale", ImageUrl="http://lorempixel.com/100/100/people/1" },
                 new Contact { Name="Juan", ImageUrl="http://lorempixel.com/100/100/people/2", Status="Hey, let's talk!" }
             };
+
+            if (String.IsNullOrWhiteSpace(searchText))
+                return contacts;
+
+            return new ObservableCollection<Contact>(contacts.Where(c => c.Name.ToLower().StartsWith(searchText)));
         }
         public ListPage()
         {
@@ -53,6 +58,11 @@ namespace HelloWorld
             listView.ItemsSource = GetContacts();
 
             listView.EndRefresh();
+        }
+
+        private void SearchBar_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            listView.ItemsSource = GetContacts(e.NewTextValue);
         }
     }
 }
