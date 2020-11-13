@@ -10,7 +10,7 @@ namespace HelloWorld
         {
             InitializeComponent();
 
-            MainPage = new ContactsPage();
+            MainPage = new TabbedMainPage();
         }
 
         protected override void OnStart()
