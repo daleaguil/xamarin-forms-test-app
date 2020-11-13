@@ -10,7 +10,7 @@ namespace HelloWorld
         {
             InitializeComponent();
 
-            MainPage = new TabbedMainPage();
+            MainPage = new CarouselMainPage();
         }
 
         protected override void OnStart()

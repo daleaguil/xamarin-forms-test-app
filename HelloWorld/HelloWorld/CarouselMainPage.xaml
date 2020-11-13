@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<CarouselPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:HelloWorld"
+             x:Class="HelloWorld.CarouselMainPage">
+    <local:ImageExercise />
+    <local:AbsoluteLayoutExercise2/>
+    <ContentPage Title="Page 1">
+        <Label Text="Page 1 Content" VerticalOptions="Center" HorizontalOptions="Center"/>
+    </ContentPage>
+    <ContentPage Title="Page 2">
+        <Label Text="Page 2 Content" VerticalOptions="Center" HorizontalOptions="Center"/>
+    </ContentPage>
+</CarouselPage>
