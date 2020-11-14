@@ -7,7 +7,9 @@
             <Switch IsToggled="False" x:Name="switch" Toggled="switch_Toggled" HorizontalOptions="StartAndExpand"/>
             <Label Text="Welcome to Xamarin.Forms!"
                 IsVisible="{Binding Source={x:Reference switch}, Path=IsToggled}"
-                x:Name="label"/>
+                x:Name="labelSwitch"/>
+            <Slider x:Name="slider" Maximum="255"  Minimum="10" Value="50" ValueChanged="slider_ValueChanged"/>
+            <Label Text="{Binding Source={x:Reference slider}, Path=Value, StringFormat='{0:N0}'}" x:Name="labelSlider"/>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

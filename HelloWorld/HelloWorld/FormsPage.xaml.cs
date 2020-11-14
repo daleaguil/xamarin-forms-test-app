@@ -20,7 +20,13 @@ namespace HelloWorld
         private void switch_Toggled(object sender, ToggledEventArgs e)
         {
             //Hide/Unhide label
-            //label.IsVisible = e.Value;
+            //labelSwitch.IsVisible = e.Value;
+        }
+
+        private void slider_ValueChanged(object sender, ValueChangedEventArgs e)
+        {
+            //Change label's text
+            //labelSlider.Text = String.Format("{0:N0}", e.NewValue);
         }
     }
 }
