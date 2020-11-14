@@ -12,6 +12,11 @@
             <Label Text="{Binding Source={x:Reference slider}, Path=Value, StringFormat='{0:N0}'}" x:Name="labelSlider"/>
             <Stepper x:Name="stepper" Increment="10"/>
             <Label Text="{Binding Source={x:Reference stepper}, Path=Value}"/>
+            <Entry Keyboard="Numeric" Placeholder="Phone" Completed="Entry_Completed"/>
+            <Entry IsPassword="True" Placeholder="Password" TextChanged="Entry_TextChanged"/>
+            <Label x:Name="password" />
+            <Label x:Name="completed" />
+            <Editor VerticalOptions="FillAndExpand"/>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

@@ -28,5 +28,15 @@ namespace HelloWorld
             //Change label's text
             //labelSlider.Text = String.Format("{0:N0}", e.NewValue);
         }
+
+        private void Entry_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            password.Text = String.Format("Your password is: {0}", e.NewTextValue);
+        }
+
+        private void Entry_Completed(object sender, EventArgs e)
+        {
+            completed.Text = "Completed";
+        }
     }
 }
