@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage Title="{Binding Name}"
+             xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:ic="clr-namespace:ImageCircle.Forms.Plugin.Abstractions;assembly=ImageCircle.Forms.Plugin"
+             x:Class="HelloWorld.NavExerciseUserProfilePage">
+    <ContentPage.Content>
+        <StackLayout HorizontalOptions="Start" Padding="15">
+            <Label Text="{Binding Name}" FontAttributes="Bold"/>
+            <ic:CircleImage 
+            WidthRequest="100"
+            HeightRequest="100"
+            Aspect="AspectFill"
+            Source="{Binding ImageUrl}"
+            HorizontalOptions="Start"/>
+            <Label Text="{Binding Description}"/>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
