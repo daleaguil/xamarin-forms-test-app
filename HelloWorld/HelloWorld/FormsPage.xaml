@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="HelloWorld.FormsPage">
+    <ContentPage.Content>
+        <StackLayout Padding="40">
+            <Switch IsToggled="False" x:Name="switch" Toggled="switch_Toggled" HorizontalOptions="StartAndExpand"/>
+            <Label Text="Welcome to Xamarin.Forms!"
+                IsVisible="{Binding Source={x:Reference switch}, Path=IsToggled}"
+                x:Name="label"/>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
