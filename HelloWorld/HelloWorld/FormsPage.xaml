@@ -2,6 +2,7 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:sys="clr-namespace:System;assembly=mscorlib"
+             xmlns:local="clr-namespace:HelloWorld.Extensions"
              x:Class="HelloWorld.FormsPage">
     <TableView>
         <TableRoot>
@@ -9,12 +10,8 @@
                 <TextCell Text="Name" Detail="Dale Vincent Aguil" />
                 <EntryCell Label="Title" Placeholder="(eg. Janitor}" />
                 <SwitchCell Text="Notifications" On="True"/>
-                <ViewCell>
-                    <StackLayout Orientation="Horizontal" Padding="15, 0">
-                        <Label Text="Starts" VerticalOptions="Center"/>
-                        <DatePicker Date="{x:Static sys:DateTime.Today}" HorizontalOptions="EndAndExpand"/>
-                    </StackLayout>
-                </ViewCell>
+                <local:DateCell Label="Start"/>
+                <local:DateCell Label="End"/>
             </TableSection>
         </TableRoot>
     </TableView>
