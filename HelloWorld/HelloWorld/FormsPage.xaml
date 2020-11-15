@@ -9,6 +9,12 @@
                 <TextCell Text="Name" Detail="Dale Vincent Aguil" />
                 <EntryCell Label="Title" Placeholder="(eg. Janitor}" />
                 <SwitchCell Text="Notifications" On="True"/>
+                <ViewCell>
+                    <StackLayout Orientation="Horizontal" Padding="15, 0">
+                        <Label Text="Starts" VerticalOptions="Center"/>
+                        <DatePicker Date="{x:Static sys:DateTime.Today}" HorizontalOptions="EndAndExpand"/>
+                    </StackLayout>
+                </ViewCell>
             </TableSection>
         </TableRoot>
     </TableView>
