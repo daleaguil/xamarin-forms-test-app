@@ -4,19 +4,12 @@
              x:Class="HelloWorld.FormsPage">
     <ContentPage.Content>
         <StackLayout Padding="40">
-            <Switch IsToggled="False" x:Name="switch" Toggled="switch_Toggled" HorizontalOptions="StartAndExpand"/>
-            <Label Text="Welcome to Xamarin.Forms!"
-                IsVisible="{Binding Source={x:Reference switch}, Path=IsToggled}"
-                x:Name="labelSwitch"/>
-            <Slider x:Name="slider" Maximum="255" Minimum="10" Value="50" ValueChanged="slider_ValueChanged"/>
-            <Label Text="{Binding Source={x:Reference slider}, Path=Value, StringFormat='{0:N0}'}" x:Name="labelSlider"/>
-            <Stepper x:Name="stepper" Increment="10"/>
-            <Label Text="{Binding Source={x:Reference stepper}, Path=Value}"/>
-            <Entry Keyboard="Numeric" Placeholder="Phone" Completed="Entry_Completed"/>
-            <Entry IsPassword="True" Placeholder="Password" TextChanged="Entry_TextChanged"/>
-            <Label x:Name="password" />
-            <Label x:Name="completed" />
-            <Editor VerticalOptions="FillAndExpand"/>
+            <Picker x:Name="contactMethod" SelectedIndexChanged="contactMethod_SelectedIndexChanged">
+                <!--<Picker.Items>
+                    <x:String>SMS</x:String>
+                    <x:String>Email</x:String>
+                </Picker.Items>-->
+            </Picker>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

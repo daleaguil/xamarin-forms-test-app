@@ -12,31 +12,38 @@ namespace HelloWorld
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class FormsPage : ContentPage
     {
+        public class ContactMethod
+        {
+            public int Id { get; set; }
+            public string Name { get; set; }
+        }
+
+        private IList<ContactMethod> _contactMethods;
         public FormsPage()
         {
             InitializeComponent();
+
+            _contactMethods = GetContactMethods();
+
+            foreach (var method in _contactMethods)
+                contactMethod.Items.Add(method.Name);
         }
 
-        private void switch_Toggled(object sender, ToggledEventArgs e)
+        private void contactMethod_SelectedIndexChanged(object sender, EventArgs e)
         {
-            //Hide/Unhide label
-            //labelSwitch.IsVisible = e.Value;
+            var methodName = contactMethod.Items[contactMethod.SelectedIndex];
+            var method = _contactMethods.Single(m => m.Name == methodName);
+
+            DisplayAlert("Sending a message thru:", String.Format("{0}: {1}",method.Id, methodName), "OK");
         }
 
-        private void slider_ValueChanged(object sender, ValueChangedEventArgs e)
+        private IList<ContactMethod> GetContactMethods()
         {
-            //Change label's text
-            //labelSlider.Text = String.Format("{0:N0}", e.NewValue);
-        }
-
-        private void Entry_TextChanged(object sender, TextChangedEventArgs e)
-        {
-            password.Text = String.Format("Your password is: {0}", e.NewTextValue);
-        }
-
-        private void Entry_Completed(object sender, EventArgs e)
-        {
-            completed.Text = "Completed";
+            return new List<ContactMethod>
+            {
+                new ContactMethod { Id = 1, Name = "SMS" },
+                new ContactMethod { Id = 2, Name = "Email" },
+            };
         }
     }
 }
