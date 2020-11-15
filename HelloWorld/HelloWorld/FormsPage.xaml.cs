@@ -15,8 +15,6 @@ namespace HelloWorld
         public FormsPage()
         {
             InitializeComponent();
-
-            timePicker.Time = DateTime.Now.TimeOfDay;
         }
     }
 }
