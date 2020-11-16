@@ -14,21 +14,21 @@ namespace HelloWorld
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class ListPage : ContentPage
     {
-        private ObservableCollection<Contact> _contacts;
+        private ObservableCollection<ContactDemo> _contacts;
 
-        ObservableCollection<Contact> GetContacts(string searchText = null)
+        ObservableCollection<ContactDemo> GetContacts(string searchText = null)
         {
             //This simulates consuming a remote service.
-            var contacts = new ObservableCollection<Contact>
+            var contacts = new ObservableCollection<ContactDemo>
             {
-                new Contact { Name="Dale", ImageUrl="http://lorempixel.com/100/100/people/1" },
-                new Contact { Name="Juan", ImageUrl="http://lorempixel.com/100/100/people/2", Status="Hey, let's talk!" }
+                new ContactDemo { Name="Dale", ImageUrl="http://lorempixel.com/100/100/people/1" },
+                new ContactDemo { Name="Juan", ImageUrl="http://lorempixel.com/100/100/people/2", Status="Hey, let's talk!" }
             };
 
             if (String.IsNullOrWhiteSpace(searchText))
                 return contacts;
 
-            return new ObservableCollection<Contact>(contacts.Where(c => c.Name.ToLower().StartsWith(searchText)));
+            return new ObservableCollection<ContactDemo>(contacts.Where(c => c.Name.ToLower().StartsWith(searchText)));
         }
         public ListPage()
         {
@@ -42,14 +42,14 @@ namespace HelloWorld
         private void Call_Clicked(object sender, EventArgs e)
         {
             var menuItem = sender as MenuItem;
-            var contact = menuItem.CommandParameter as Contact;
+            var contact = menuItem.CommandParameter as ContactDemo;
 
             DisplayAlert("Call", contact.Name, "OK");
         }
 
         private void Delete_Clicked(object sender, EventArgs e)
         {
-            var contact = (sender as MenuItem).CommandParameter as Contact;
+            var contact = (sender as MenuItem).CommandParameter as ContactDemo;
             _contacts.Remove(contact);
         }
 

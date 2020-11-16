@@ -13,7 +13,7 @@ namespace HelloWorld
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class ContactDetailPage : ContentPage
     {
-        public ContactDetailPage(Contact contact)
+        public ContactDetailPage(ContactDemo contact)
         {
             if (contact == null)
                 throw new ArgumentNullException();

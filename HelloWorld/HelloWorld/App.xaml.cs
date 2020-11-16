@@ -10,7 +10,7 @@ namespace HelloWorld
         {
             InitializeComponent();
 
-            MainPage = new NavigationPage(new FormsPage());
+            MainPage = new NavigationPage(new ContactBookMainPage());
         }
 
         protected override void OnStart()

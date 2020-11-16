@@ -17,16 +17,16 @@ namespace HelloWorld
         {
             InitializeComponent();
 
-            listView.ItemsSource = new List<Contact>
+            listView.ItemsSource = new List<ContactDemo>
             {
-                new Contact { Name="Dale", ImageUrl="http://lorempixel.com/100/100/people/1" },
-                new Contact { Name="Juan", ImageUrl="http://lorempixel.com/100/100/people/2", Status="Hey, let's talk!" }
+                new ContactDemo { Name="Dale", ImageUrl="http://lorempixel.com/100/100/people/1" },
+                new ContactDemo { Name="Juan", ImageUrl="http://lorempixel.com/100/100/people/2", Status="Hey, let's talk!" }
             };
         }
 
         private void listView_ItemSelected(object sender, SelectedItemChangedEventArgs e)
         {
-            var contact = e.SelectedItem as Contact;
+            var contact = e.SelectedItem as ContactDemo;
             Detail = new NavigationPage(new ContactDetailPage(contact));
             IsPresented = false;
         }

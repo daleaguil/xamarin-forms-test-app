@@ -4,12 +4,12 @@ using System.Text;
 
 namespace HelloWorld.Models
 {
-    class ContactGroup : List<Contact>
+    class ContactGroupDemo : List<ContactDemo>
     {
         public string Title { get; set; }
         public string ShortTitle { get; set; }
 
-        public ContactGroup(string title, string shortTitle)
+        public ContactGroupDemo(string title, string shortTitle)
         {
             Title = title;
             ShortTitle = shortTitle;
