@@ -12,7 +12,7 @@ namespace HelloWorld
         {
             InitializeComponent();
 
-            MainPage = new AppProperties();
+            MainPage = new RecipesPage();
         }
 
         protected override void OnStart()
