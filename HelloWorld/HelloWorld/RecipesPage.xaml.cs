@@ -2,7 +2,9 @@
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -11,13 +13,34 @@ using Xamarin.Forms.Xaml;
 
 namespace HelloWorld
 {
-    public class Recipe 
+    public class Recipe : INotifyPropertyChanged
     {
+        public event PropertyChangedEventHandler PropertyChanged;
+
         [PrimaryKey, AutoIncrement]
         public int Id { get; set; }
 
+        private string _name;
+
         [MaxLength(255)]
-        public string Name { get; set; }
+        public string Name 
+        {
+            get {   return _name;   }
+            set
+            {
+                if (_name == value)
+                    return;
+
+                _name = value;
+
+                OnPropertyChanged();
+            }
+        }
+
+        private void OnPropertyChanged([CallerMemberName] string propertyName = null)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
     }
 
     [XamlCompilation(XamlCompilationOptions.Compile)]

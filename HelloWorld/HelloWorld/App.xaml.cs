@@ -12,7 +12,7 @@ namespace HelloWorld
         {
             InitializeComponent();
 
-            MainPage = new RecipesPage();
+            MainPage = new RESTfulServicesPage();
         }
 
         protected override void OnStart()
