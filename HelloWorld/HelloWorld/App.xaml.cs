@@ -12,7 +12,7 @@ namespace HelloWorld
         {
             InitializeComponent();
 
-            MainPage = new RESTfulServicesPage();
+            MainPage = new NavigationPage(new ContactBookMainPage());
         }
 
         protected override void OnStart()

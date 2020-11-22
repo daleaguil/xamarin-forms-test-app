@@ -1,4 +1,5 @@
 ﻿using HelloWorld.Models;
+using SQLite;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -14,18 +15,25 @@ namespace HelloWorld
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class ContactBookMainPage : ContentPage
     {
+        private SQLiteAsyncConnection _connection;
         private ObservableCollection<Contact> _contacts;
         public ContactBookMainPage()
         {
             InitializeComponent();
 
-            _contacts = new ObservableCollection<Contact>
-            {
-                new Contact { Id = 1, FirstName = "Dale", LastName = "Aguil", Email = "test@test.test", Phone = "12345", IsBlocked = false },
-                new Contact { Id = 2, FirstName = "Juan", LastName = "Dela Cruz", Email = "test@test.test", Phone = "12345", IsBlocked = false },
-            };
+            _connection = DependencyService.Get<ISQLiteDb>().GetConnection();
+        }
+
+        protected override async void OnAppearing()
+        {
+            await _connection.CreateTableAsync<Contact>();
+
+            var contacts = await _connection.Table<Contact>().ToListAsync();
+            _contacts = new ObservableCollection<Contact>(contacts);
 
             listView.ItemsSource = _contacts;
+
+            base.OnAppearing();
         }
 
         async private void OnContactSelected(object sender, SelectedItemChangedEventArgs e)
@@ -69,7 +77,11 @@ namespace HelloWorld
             var contact = (sender as MenuItem).CommandParameter as Contact;
 
             if (await DisplayAlert("Warning", $"Do you want to delete {contact.FullName}?", "Yes", "No"))
+            {
                 _contacts.Remove(contact);
+
+                await _connection.DeleteAsync(contact);
+            }
         }
     }
 }

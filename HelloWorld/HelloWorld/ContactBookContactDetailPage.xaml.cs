@@ -1,4 +1,5 @@
 ﻿using HelloWorld.Models;
+using SQLite;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,7 +14,8 @@ namespace HelloWorld
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class ContactBookContactDetailPage : ContentPage
     {
-        public EventHandler<Contact> ContactAdded;
+		private SQLiteAsyncConnection _connection;
+		public EventHandler<Contact> ContactAdded;
         public EventHandler<Contact> ContactUpdated;
         public ContactBookContactDetailPage(Contact contact)
         {
@@ -21,6 +23,8 @@ namespace HelloWorld
 				throw new ArgumentNullException(nameof(contact));
 
 			InitializeComponent();
+
+			_connection = DependencyService.Get<ISQLiteDb>().GetConnection();
 
 			BindingContext = new Contact
 			{
@@ -45,12 +49,15 @@ namespace HelloWorld
 
 			if (contact.Id == 0)
 			{
-				contact.Id = 1;
 				ContactAdded?.Invoke(this, contact);
+
+				await _connection.InsertAsync(contact);
 			}
 			else
 			{
 				ContactUpdated?.Invoke(this, contact);
+
+				await _connection.UpdateAsync(contact);
 			}
 
 			await Navigation.PopAsync();
